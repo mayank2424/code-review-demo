@@ -14,3 +14,15 @@ app1.get('/user/:id', (req, res) => {
         }
     })
 })
+
+
+const fsPromise = require('fs').promises;
+
+async function readAndWriteToFile(fileToWriteName) {
+    try {
+        const data = await fsPromise.readFile('example.txt', 'utf8');
+        await fsPromise.writeFile(fileToWriteName, data);
+    } catch (err) {
+        console.error('Error reading file:', err);
+    }
+}
